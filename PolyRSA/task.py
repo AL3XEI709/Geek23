@@ -1,6 +1,6 @@
 import gmpy2
 from Crypto.Util.number import *  
-flag = b"SYC{xxxxxxxxxxxxxxxxxx}"
+flag = b"SYC{Al3XEI_FAKE_FLAG}"
 p,q = [getPrime(2048) for _ in "__"] 
 e1,e2 = [getPrime(17) for _ in "__"] 
 e = 65537

@@ -1,9 +1,8 @@
 from Crypto.Util.number import * 
 import os 
-flag = b'xxxxxxxx'
+flag = b"SYC{Al3XEI_FAKE_FLAG}"
 
-def pad(message,padlen):
-    return message+os.urandom(padlen-len(message))
+pad = lambda msg,padlen: msg+os.urandom(padlen-len(msg))
 
 
 flag = pad(flag,32)

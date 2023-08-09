@@ -1,6 +1,6 @@
 import gmpy2
 from Crypto.Util.number import * 
-flag = b'SYC{xxxxxx}' 
+flag = b"SYC{Al3XEI_FAKE_FLAG}"
 assert len(flag) == 35
 p,q = [getPrime(2048) for _ in "__"] 
 n = p*q 
