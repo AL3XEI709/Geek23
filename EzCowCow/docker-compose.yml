@@ -1,0 +1,10 @@
+version: '0.0'
+services:
+  chall:
+    build:
+      context: .
+    init: true
+    environment:
+      - FLAG=SYC{ECC_M4ster}
+    ports:
+      - 8763:8763

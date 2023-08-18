@@ -1,0 +1,10 @@
+version: '0.0'
+services:
+  chall:
+    build:
+      context: .
+    init: true
+    environment:
+      - FLAG=SYC{DES_1s_0ut_0f_t1me}
+    ports:
+      - 23333:23333
