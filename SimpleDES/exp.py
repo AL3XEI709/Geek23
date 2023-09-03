@@ -22,6 +22,7 @@ for head in product(table,repeat=4):
 rec.sendline("".join(head).encode())
 
 
+ 
 rec.sendlineafter(b'>',b'2') 
 rec.sendlineafter(b'>',key) 
 ct = rec.recvline()[1:-1]
@@ -33,3 +34,4 @@ print(long_to_bytes(int(pt,16)))
 
 rec.close()
 # b'SYC{DES_1s_0ut_0f_t1me}\xe1\x92z${S\x08\x7fm'
+

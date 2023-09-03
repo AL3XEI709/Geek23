@@ -5,7 +5,7 @@ import hashlib
 from Crypto.Util.number import getPrime  
 
 flag = os.environ.get("FLAG", b"SYC{Al3XEI_FAKE_FLAG}")
-DEBUG = False 
+DEBUG = True 
 banner = '|'*70
 
 def leg(a,p):

@@ -5,6 +5,6 @@ services:
       context: .
     init: true
     environment:
-      - FLAG=SYC{ECC_M4ster}
+      - FLAG=SYC{G00d!_u_4r3_Qu33n_0f_Quadratic} 
     ports:
-      - 8763:8763
+      - 3042:3042
