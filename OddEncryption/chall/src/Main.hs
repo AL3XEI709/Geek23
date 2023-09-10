@@ -35,3 +35,6 @@ main = do
           ) (initialState, []) [1..numBits]
     putStrLn "Odd Encryption Output:"
     putStrLn $ concatMap show resultBits
+
+-- Odd Encryption Output:
+-- 11100011101010001100111001010000011010011011010111011111011000110011100010010110110110101001111101101001001010001010001011011010

@@ -63,8 +63,12 @@ def service():
     print('Bye!')
     exit()
 
-service()
-
+try:
+    service() 
+except Exception:
+    print("Something goes wrong...\n") 
+    print(banner+'\n') 
+    exit() 
 
 
 

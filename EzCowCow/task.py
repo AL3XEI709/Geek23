@@ -39,36 +39,39 @@ def check(a,b,p,turn,ans):
         exit()
 
 
-
-if not proof_of_work():
-    exit() 
-print(banner) 
-print('\nHi Crypto-ers! AL3XEI here. I know you are excellent at math, so I prepared a game for u.') 
-print('In the equation y^2 = x^3+ a*x + b (mod p), 4 points are given. Plz give me the right a, b or p to contine the game.') 
-print('Good Luck!\n') 
-print(banner+'\n') 
-
-for i in range(10):
-    turn = random.choice(abp) 
-    p = getPrime(pbits) 
-    a,b = [next_prime(random.randint(2,p)) for _ in "ab"] 
-    curve = EllipticCurve(GF(p),[a,b]) 
-    pts = [curve.random_point() for _ in range(4)]
-    pts = [(_[0], _[1]) for _ in pts] 
-    for _ in pts:
-        print(_,end=" ") 
-    print('\nGive me '+turn+" :") 
-    ans = int(input('> ')) 
-    if check(a,b,p,turn,ans):
-        print("Good! Next challenge->\n") 
-        print(banner+'\n')
-        pbits+=5  
-        continue 
-    else:
-        print("Something goes wrong...\n") 
-        print(banner+'\n') 
+try: 
+    if not proof_of_work():
         exit() 
+    print(banner) 
+    print('\nHi Crypto-ers! AL3XEI here. I know you are excellent at math, so I prepared a game for u.') 
+    print('In the equation y^2 = x^3+ a*x + b (mod p), 4 points are given. Plz give me the right a, b or p to contine the game.') 
+    print('Good Luck!\n') 
+    print(banner+'\n') 
 
-print('Congrats! Your flag is:',flag)
+    for i in range(10):
+        turn = random.choice(abp) 
+        p = getPrime(pbits) 
+        a,b = [next_prime(random.randint(2,p)) for _ in "ab"] 
+        curve = EllipticCurve(GF(p),[a,b]) 
+        pts = [curve.random_point() for _ in range(4)]
+        pts = [(_[0], _[1]) for _ in pts] 
+        for _ in pts:
+            print(_,end=" ") 
+        print('\nGive me '+turn+" :") 
+        ans = int(input('> ')) 
+        if check(a,b,p,turn,ans):
+            print("Good! Next challenge->\n") 
+            print(banner+'\n')
+            pbits+=5  
+            continue 
+        else:
+            print("Something goes wrong...\n") 
+            print(banner+'\n') 
+            exit() 
 
-    
+    print('Congrats! Your flag is:',flag)
+
+except Exception:
+    print("Something goes wrong...\n") 
+    print(banner+'\n') 
+    exit() 

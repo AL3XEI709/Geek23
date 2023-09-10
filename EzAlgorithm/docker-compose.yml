@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  chall:
+    build:
+      context: .
+    environment:
+      - FLAG=SYC{Alg0r1thm_1s_s0_S1mpl3!}  
+    ports:
+      - 2613:2613

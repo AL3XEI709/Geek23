@@ -1,0 +1,1 @@
+flag = b'SYC{lcg_a@@@@@ttack}'

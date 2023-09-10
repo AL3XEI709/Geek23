@@ -44,36 +44,39 @@ def s1(set):
         return leg(a,p)*(p-1) 
 
 
-proof_of_work() 
-print(banner) 
-print('\nHi Crypto-ers! AL3XEI Here. In number theory, if there exists an integer q satisfying x^2=q(mod n), q is so called a quadratic residue.')  
-print('We write this calculation as L(a,p), which its value shows a is or is not quadratic residue modulo p. Usually, L(a,p) = pow(a,p-1//2,p).') 
-print('Below, you need to give me the answer of the sum of L(a*l**2+b*l+1,p), where a,b be integers, p be a prime, and l rise from 0 to p-1.')
-print('Hope you success!\n') 
-print(banner+'\n') 
+try:
+    proof_of_work() 
+    print(banner) 
+    print('\nHi Crypto-ers! AL3XEI Here. In number theory, if there exists an integer q satisfying x^2=q(mod n), q is so called a quadratic residue.')  
+    print('We write this calculation as L(a,p), which its value shows a is or is not quadratic residue modulo p. Usually, L(a,p) = pow(a,p-1//2,p).') 
+    print('Below, you need to give me the answer of the sum of L(a*l**2+b*l+1,p), where a,b be integers, p be a prime, and l rise from 0 to p-1.')
+    print('Hope you success!\n') 
+    print(banner+'\n') 
 
-nbits = 8 
-while nbits < 1024:
-    set = gen1(nbits) 
-    p,a,b,c = set 
-    print("{} * l**2 + {} * l + {}".format(a,b,c))
-    print("p = {} ({} bits)".format(p,nbits)) 
-    ans = s1(set) 
-    if DEBUG:
-        print("ans = ", ans) 
-    res = int(input("\n> Type your answer: "))  
-    if res == ans:
-        print("Good! Next challenge->\n") 
-        print(banner+'\n') 
-        nbits *= 2 
-        continue 
-    else:
-        print("Something goes wrong...\n") 
-        print(banner+'\n') 
-        exit() 
+    nbits = 8 
+    while nbits < 1024:
+        set = gen1(nbits) 
+        p,a,b,c = set 
+        print("{} * l**2 + {} * l + {}".format(a,b,c))
+        print("p = {} ({} bits)".format(p,nbits)) 
+        ans = s1(set) 
+        if DEBUG:
+            print("ans = ", ans) 
+        res = int(input("\n> Type your answer: "))  
+        if res == ans:
+            print("Good! Next challenge->\n") 
+            print(banner+'\n') 
+            nbits *= 2 
+            continue 
+        else:
+            print("Something goes wrong...\n") 
+            print(banner+'\n') 
+            exit() 
+        
+
+    print('Congrats! Your flag is:',flag)
     
-
-print('Congrats! Your flag is:',flag)
-    
-
-
+except Exception:
+    print("Something goes wrong...\n") 
+    print(banner+'\n') 
+    exit() 
