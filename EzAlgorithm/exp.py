@@ -23,12 +23,12 @@ for head in product(table,repeat=4):
         break
 rec.sendline("".join(head).encode())
 
-rec.sendlineafter(b'>',str(int(2<<32+1)).encode()) 
+rec.sendlineafter(b'>',str(int(2**32-1)).encode()) 
 
 res = int(rec.recvline().decode()) 
 ans = "" 
-for _ in range(10): 
-    ans+=str((res//((2<<32+1)**_))%(2<<32+1))+"," 
+for _ in range(128): 
+    ans+=str((res//((2**32-1)**_))%(2**32-1))+"," 
 ans = ans[:-1]
 rec.sendlineafter(b'>',ans.encode()) 
 print(rec.recvline())

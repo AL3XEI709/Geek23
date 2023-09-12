@@ -4,7 +4,7 @@ import string
 import hashlib 
 
 flag = os.environ.get("FLAG", b"SYC{Al3XEI_FAKE_FLAG}")
-DEBUG = False
+DEBUG = False  
 banner = '|'*70
 if DEBUG:
     print("==DEBUG MODE==") 
@@ -24,15 +24,19 @@ def proof_of_work():
 try:
     if not proof_of_work():
         exit() 
-    parms = [random.randrange(2,2<<32) for _ in range(10)]    
-    res = int(input(':> ')) 
-    if res >= 2**35:
+    print(banner) 
+    parms = [random.getrandbits(32) for _ in range(128)] 
+    res = res = int(input('Give me x calculating f(x) :\n> '))  
+    if res >= 2**32:
+        print("Give me something smaller.\n")  
+        print(banner+'\n') 
         exit() 
+
     cnt = 0  
-    for _ in range(10): 
+    for _ in range(128): 
         cnt += pow(res,_)*parms[_]  
     print(cnt) 
-    ans = input(':> ') 
+    ans = input('Give me Coefficients :\n> ') 
     ans = [int(_) for _ in ans.split(",")] 
     
     if ans == parms:
