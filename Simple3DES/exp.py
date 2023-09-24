@@ -3,7 +3,7 @@ from Crypto.Util.number import *
 from hashlib import sha256
 from itertools import product 
 import string 
-key = b'FEFEFEFEFEFEFEFE'
+key = b'340282366920938463444927863358058659840'
 table = string.ascii_letters+string.digits
 rec = remote('59.110.20.54', 23333) 
 _ = rec.recvuntil(b'XXXX:')
@@ -20,18 +20,18 @@ for head in product(table,repeat=4):
         print('find!') 
         break
 rec.sendline("".join(head).encode())
-
+rec.interactive()
 
  
-rec.sendlineafter(b'>',b'2') 
+'''rec.sendlineafter(b'>',b'2') 
 rec.sendlineafter(b'>',key) 
 ct = rec.recvline()[1:-1]
 rec.sendlineafter(b'>',b'1') 
 rec.sendlineafter(b'>',ct) 
 rec.sendlineafter(b'>',key)
 pt = rec.recvline()[1:-1]
-print(long_to_bytes(int(pt,16)))
+print(long_to_bytes(int(pt)))
 
 rec.close()
-# b'SYC{DES_1s_0ut_0f_t1me}\xe1\x92z${S\x08\x7fm'
+# b'SYC{DES_1s_0ut_0f_t1me}\xe1\x92z${S\x08\x7fm'''
 
