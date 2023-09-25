@@ -5,6 +5,6 @@
 </head>
 <body>
     <h1>Accepted</h1>
-    <p>Content: OK</p>
+    <p>Content: Congrats! here is your flag: SYC{AL3XEI_FAKE_FLAG}</p>
 </body>
 </html>

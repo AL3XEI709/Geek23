@@ -5,6 +5,6 @@
 </head>
 <body>
     <h1>Rejected</h1>
-    <p>Content: Ohoh!</p>
+    <p>Content: Ohoh! You are not allowed to get the flag.</p>
 </body>
 </html>
