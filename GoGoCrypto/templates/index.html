@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Token Generator</title>
+</head>
+<body>
+    <h1>Session Token Generator</h1>
+    <p>Generated Token: {{.token}}</p>
+    <form action="/decrypt" method="POST">
+        <label for="inputHex">Enter Token (Hexadecimal):</label>
+        <input type="text" id="inputHex" name="inputHex" required>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
