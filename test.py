@@ -1,22 +1,15 @@
-from pwn import *
-from Crypto.Util.number import *
-from hashlib import sha256
-from itertools import product 
-import string 
-
-table = string.ascii_letters+string.digits
-rec = remote('59.110.20.54', 23333) 
-
-
-_ = rec.recvuntil(b'XXXX:')
-
-tail,h = _[12:28],_[33:97] 
-for head in product(table,repeat=4): 
-    m = "".join(head)+tail.decode() 
-    h_ = sha256(m.encode()) 
-    if h_.hexdigest() == h.decode():
-        print('find!') 
+scoreboard = []
+while True:
+    name = input()
+    if name == "quit":
         break
-rec.sendline("".join(head).encode())
+    try:
+        score = float(input())
+    except ValueError:
+        print("成绩必须是数字，请重新输入。")
+        continue
+    scoreboard.append((name, score))
+scoreboard.sort(key=lambda x: x[1], reverse=True)
 
-rec.interactive()
+for i, (name, score) in enumerate(scoreboard):
+    print(f"第{i+1}名：{name}, 成绩为{score}分")
