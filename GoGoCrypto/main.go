@@ -4,10 +4,10 @@ import (
     "crypto/aes"
     "crypto/cipher"
     "crypto/rand"
-    "encoding/hex"
     "net/http"
     "bytes"
-
+	"fmt"
+	"encoding/base64"
     "github.com/gin-gonic/gin"
 )
 
@@ -28,23 +28,24 @@ func main() {
 		token, e := enc(sid, key, iv) 
 		check(e) 
 		c.SetSameSite(http.SameSiteStrictMode) 
-		c.SetCookie("sid", hex.EncodeToString(token), 0, "/", "", true, true) 
+		fmt.Println("sid: "+base64.StdEncoding.EncodeToString(token))
+		c.SetCookie("sid", base64.StdEncoding.EncodeToString(token), 0, "/", "", true, true) 
 		c.HTML(200, "index.html", nil)
 	}) 
 
 	router.POST("/dec", func(c *gin.Context) {
 		ct_ := c.PostForm("ct") 
-		ct, e := hex.DecodeString(ct_) 
+		ct, e := base64.StdEncoding.DecodeString(ct_) 
 		if e != nil {
 			c.Redirect(303, "/reject.php") 
 			return 
 		}
 		pt_, e := dec(ct, key, iv) 
-		if e != nil || hex.EncodeToString(pt_) == hex.EncodeToString(sid){
+		if e != nil || base64.StdEncoding.EncodeToString(pt_) == base64.StdEncoding.EncodeToString(sid){
 			c.Redirect(303, "/reject.php") 
 			return 
 		}
-		pt := hex.EncodeToString(pt_) 
+		pt := base64.StdEncoding.EncodeToString(pt_) 
 		router.GET("/"+pt, func(c *gin.Context){
 			c.HTML(200, "pass.php", nil)
 		})
@@ -52,7 +53,7 @@ func main() {
 		
 	})
 
-	router.Run(":97815")
+	router.Run(":7777")
 
 }
 
