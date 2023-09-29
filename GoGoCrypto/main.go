@@ -21,8 +21,8 @@ func main() {
 
 	router := gin.Default() 
 	router.LoadHTMLGlob("templates/*") 
-	router.StaticFile("/pass.php", "./pass.php") 
-	router.StaticFile("/reject.php", "./reject.php") 
+	router.StaticFile("/pass.php", "./templates/pass.php") 
+	router.StaticFile("/reject.php", "./templates/reject.php") 
 
 	router.GET("/", func(c *gin.Context) {
 		token, e := enc(sid, key, iv) 
