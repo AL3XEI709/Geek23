@@ -55,3 +55,4 @@ while x<p:
       i+=1
       x=ans+i*gbs
 
+# b'SYC{D1scr3te_L0g_W1th_Mult1pl3_pr1m35}'

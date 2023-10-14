@@ -4,7 +4,7 @@ import string
 import hashlib 
 
 flag = os.environ.get("FLAG", b"SYC{Al3XEI_FAKE_FLAG}")
-DEBUG = True 
+DEBUG = False
 banner = '|'*70
 if DEBUG:
     print("==DEBUG MODE==") 

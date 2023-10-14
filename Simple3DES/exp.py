@@ -20,10 +20,7 @@ for head in product(table,repeat=4):
         print('find!') 
         break
 rec.sendline("".join(head).encode())
-rec.interactive()
-
- 
-'''rec.sendlineafter(b'>',b'2') 
+rec.sendlineafter(b'>',b'2') 
 rec.sendlineafter(b'>',key) 
 ct = rec.recvline()[1:-1]
 rec.sendlineafter(b'>',b'1') 

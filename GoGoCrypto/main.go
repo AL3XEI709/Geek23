@@ -33,6 +33,7 @@ func main() {
 		c.HTML(200, "index.html", nil)
 	}) 
 
+
 	router.POST("/dec", func(c *gin.Context) {
 		ct_ := c.PostForm("ct") 
 		ct, e := base64.StdEncoding.DecodeString(ct_) 

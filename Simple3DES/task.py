@@ -8,7 +8,7 @@ import hashlib
 xor = lambda a,b: bytes([a[i % len(a)] ^ b[i % len(b)] for i in range(max(len(a), len(b)))])
 pad = lambda msg,padlen: msg+chr((padlen-(len(msg)%padlen))).encode()*(padlen-(len(msg)%padlen))
 
-flag = os.environ.get("FLAG", b"SYC{Al3XEI_FAKE_FLAG}").encode()
+flag = os.environ.get("FLAG", "SYC{Al3XEI_FAKE_FLAG}").encode()
 sec = os.urandom(8)
 
 banner = '|'*70
