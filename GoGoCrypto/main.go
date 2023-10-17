@@ -4,6 +4,7 @@ import (
     "crypto/aes"
     "crypto/cipher"
     "crypto/rand"
+	"crypto/md5"
     "net/http"
     "bytes"
 	"fmt"
@@ -13,11 +14,10 @@ import (
 
 
 func main() {
-	var key []byte
-	var iv [] byte 
 	sid := getrandbytes(16) 
-	key = getrandbytes(16) 
-	iv = getrandbytes(16) 
+	key := getrandbytes(16) 
+	iv := getrandbytes(16) 
+	nonce := getrandbytes(16)
 
 	router := gin.Default() 
 	router.LoadHTMLGlob("templates/*") 
@@ -28,8 +28,10 @@ func main() {
 		token, e := enc(sid, key, iv) 
 		check(e) 
 		c.SetSameSite(http.SameSiteStrictMode) 
-		fmt.Println("sid: "+base64.StdEncoding.EncodeToString(token))
+		fmt.Println("sid", base64.StdEncoding.EncodeToString(token))
+		fmt.Println("nonce",base64.StdEncoding.EncodeToString(nonce))
 		c.SetCookie("sid", base64.StdEncoding.EncodeToString(token), 0, "/", "", true, true) 
+		c.SetCookie("nonce",base64.StdEncoding.EncodeToString(nonce) , 0, "/", "", true, true) 
 		c.HTML(200, "index.html", nil)
 	}) 
 
@@ -47,7 +49,13 @@ func main() {
 			return 
 		}
 		pt := base64.StdEncoding.EncodeToString(pt_) 
-		router.GET("/"+pt, func(c *gin.Context){
+		fmt.Println("pt", pt)
+		h := md5.New() 
+		h.Write(nonce) 
+		nonce_ := base64.StdEncoding.EncodeToString(h.Sum(nil)) 
+		fmt.Println("nonce_:", nonce_)
+		router.GET("/"+pt+nonce_, func(c *gin.Context){
+			c.SetCookie("flag", "SYC{AL3XEI_TRUE_FLAG}", 0, "/", "", true, true) 
 			c.HTML(200, "pass.php", nil)
 		})
 
