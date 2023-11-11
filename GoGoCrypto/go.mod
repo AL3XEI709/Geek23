@@ -1,4 +1,4 @@
-module github.com/al3xei709/Geek23/GoGOCrypto
+module GoCode
 
 go 1.20
 

@@ -3,11 +3,9 @@ import random
 import string 
 import hashlib 
 from Crypto.Util.number import getPrime  
-
 flag = os.environ.get("FLAG", b"SYC{Al3XEI_FAKE_FLAG}")
 DEBUG = False 
 banner = '|'*70
-
 def leg(a,p):
     return pow(a,(p-1)//2,p)
 
@@ -48,8 +46,9 @@ try:
     proof_of_work() 
     print(banner) 
     print('\nHi Crypto-ers! AL3XEI Here. In number theory, if there exists an integer q satisfying x^2=q(mod n), q is so called a quadratic residue.')  
-    print('We write this calculation as L(a,p), which its value shows a is or is not quadratic residue modulo p. Usually, L(a,p) = pow(a,p-1//2,p).') 
-    print('Below, you need to give me the answer of the sum of L(a*l**2+b*l+1,p), where a,b be integers, p be a prime, and l rise from 0 to p-1.')
+    print('We write this calculation as L(a,p), which its value shows a is or is not quadratic residue modulo p.') 
+    print('Below, you need to give me the answer of the sum of L(a*l**2+b*l+1,p), where a,b are integers, p is a prime, and l rise from 0 to p-1.')
+    print('For example, given a = 2, b = 3, c = 1, p = 5, the answer will be L(1, 5) + L(6, 5) + L(15, 5) + L(28, 5) + L(45, 5) = 1.')
     print('Hope you success!\n') 
     print(banner+'\n') 
 
