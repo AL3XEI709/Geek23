@@ -2,11 +2,7 @@ from pwn import *
 from Crypto.Util.number import *
 from hashlib import sha256
 from itertools import product 
-import string 
-
-
-def leg(a,p):
-    return pow(a,(p-1)//2,p)
+from gmpy2 import legendre as leg 
 
 def s1(set): 
     p,a,b,c = set 
