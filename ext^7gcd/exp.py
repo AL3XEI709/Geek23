@@ -22,6 +22,7 @@ try:
     while True:
         _ = rec.recvuntil(b"a6:").split(b'\n')[-2].split(b']') 
         ps, bts = eval(_[0][9:].decode()+']'), eval(_[1][3:-7].decode())
+        print(ps)
         n = len(ps)
         S = 2**bts 
         X = Matrix(ZZ, n, n + 1) 
@@ -34,10 +35,11 @@ try:
 
         M = L.row(n-1).list()[1:]
         if add(ps[i]*M[i] for i in range(n)) != 1:
-            for _ in M:
-                _ = -_ 
-
+            for i in range(n):
+                M[i] = M[i]*(-1) 
+        print(add(ps[i]*M[i] for i in range(n)))
         M = str(M)[1:-1].encode() 
+        print(M)
         rec.sendline(M) 
 except Exception:
     print(rec.recvall()) 

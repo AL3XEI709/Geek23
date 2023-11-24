@@ -1,9 +1,0 @@
-version: '2.1'
-services:
-  chall:
-    build:
-      context: .
-    environment:
-      - FLAG=SYC{st3p_1nt0_1nter4ctive_Crypt0graphy}  
-    ports:
-      - 5526:5526
